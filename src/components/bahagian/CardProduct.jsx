@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CardProduct = ({picProducts,title,stars,price}) => {
+const CardProduct = ({picProducts,title,stars,price,onClick}) => {
   return (
     <div className=' h-[493px] p-3 border-b-1 border-l-1 border-gray-300 flex flex-col  justify-between'>
               <img src={picProducts} className='h-[250px]  w-full' />
@@ -33,7 +33,7 @@ const CardProduct = ({picProducts,title,stars,price}) => {
                
 
               <div className='flex justify-center'>
-  <button className='bg-[#FFD814] p-2 w-[200px] rounded-2xl'>Add to Cart</button>
+  <button onClick={onClick} className='bg-[#FFD814] p-2 w-[200px] rounded-2xl'>Add to Cart</button>
               </div>
               
                 
