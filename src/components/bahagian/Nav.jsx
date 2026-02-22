@@ -1,9 +1,19 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Nav = () => {
+
+
+
+const Nav = ({amountItems}) => {
+
+
+
+  const navigate = useNavigate();
+
+
   return (
     <div className='bg-[#131921] flex justify-between px-8 py-3 items-center'>
-          <img className='h-[30px] w-[100px]' src="../../public/images/amazon-logo-white.png" alt="" />
+          <img onClick={()=>navigate('/')} className='h-[30px] w-[100px]' src="../../public/images/amazon-logo-white.png" alt="" />
 
           <div className='flex'>
               <input  type="text" className='w-[805px] border bg-white py-1 px-3 text-[16px]' placeholder='Search'  />
@@ -21,8 +31,12 @@ const Nav = () => {
               
            
              
-             <div className=' flex items-center'>
-              <img className='h-[34px] w-[50px]' src="../../public/images/icons/cart-icon.png" alt="" />
+             <div onClick={()=> navigate('/cart')} className=' flex items-center '>
+              <div className=' relative p-1 flex'>
+ <img className='h-[34px] w-[50px]' src="../../public/images/icons/cart-icon.png" alt="" />
+ <p className='absolute left-[50%] bottom-[40%] text-[#F08804] font-bold'>{amountItems}</p>
+              </div>
+             
               <h1>cart</h1>
              </div>
           </div>

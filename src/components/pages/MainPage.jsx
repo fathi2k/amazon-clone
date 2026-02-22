@@ -41,7 +41,7 @@ useEffect(()=>{
         if (saveCart){
           setCart(saveCart)
         }
-},[cart])
+},[])
 
 
 
@@ -50,21 +50,51 @@ useEffect(()=>{
   //add to cart///
 
 
-  const handleAdd =  (id) =>{
-    const dataSama = dataProduct.find((para)=>{
-    return  para.id === id 
-      
-    })
+  const handleAdd =  (id,kuantitiCustom) =>{
+  
+    //cari dalam cart id tu ada dak
+    const adaItems = cart.find((para)=>(
+      para.id === id 
+    ))
+
+    //kalau ada tambah kuantiti je//
+
+    if (adaItems){
+      const updateCard1 = cart.map((para)=>(
+        para.id === id ? {...para,kuantiti : para.kuantiti + 1} : para
+      ))
+
+      setCart(updateCard1)
+      localStorage.setItem('dataBarang',JSON.stringify(updateCard1))
+
+    }else{
+        //add baru dengan kuantiti 1 atau custom//
 
 
-    const updatedCart = [...cart,dataSama];
-    setCart(updatedCart);
+        const adaData = dataProduct.find((para)=>(
+          para.id === id 
+        ))
+
+        const updateCard = [...cart,{...adaData,kuantiti : Number(kuantitiCustom) || 1 }]
+
+        setCart(updateCard);
+
 
     //save local //
 
-    localStorage.setItem('dataBarang',JSON.stringify(updatedCart))
+    localStorage.setItem('dataBarang',JSON.stringify(updateCard))
 
 
+
+
+
+    }
+
+
+
+
+    
+    
 
 
 
@@ -76,7 +106,7 @@ useEffect(()=>{
   return (
 
     <>
-    <Nav/>
+    <Nav amountItems={cart.kuantiti}/>
 
 
     {/* bahagian products */}
@@ -92,7 +122,7 @@ useEffect(()=>{
 
               dataProduct.map((para)=>(
                 
-                <CardProduct key={para.id} picProducts={para.image} title={para.name} price={para.priceCents} onClick={()=>handleAdd(para.id)}/>
+                <CardProduct key={para.id} picProducts={para.image} title={para.name} price={(para.priceCents / 100)} handleAdd={handleAdd} kuantiti={para.kuantiti} id={para.id}/>
               ))
 
 
