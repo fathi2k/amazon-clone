@@ -100,6 +100,12 @@ const handleDelete = (id)=> {
     total + (item.priceCents * item.kuantiti)
   ),0)
 
+  //kira total kuantiti //
+
+  const totalKuantiti = cart.reduce((total,item)=>(
+    total + item.kuantiti 
+  ),0)
+
 
 
   return (
@@ -112,7 +118,7 @@ const handleDelete = (id)=> {
 
 
       <div>
-        <h1 className='text-[25px]'>Checkout( {cart.length} items)</h1>
+        <h1 className='text-[25px]'>Checkout( {totalKuantiti} items)</h1>
       </div>
 
 
@@ -157,7 +163,7 @@ const handleDelete = (id)=> {
       <div className='border h-[350px] w-[308px] p-4 mt-[3%]  border border-gray-300  flex flex-col gap-2'>
            <h1 className='font-bold text-[18px]'>Order Summary</h1>
            <div className='flex justify-between'>
-            <h1>Items ({cart.length}):</h1>
+            <h1>Items ({totalKuantiti}):</h1>
              <h1>RM{(subTotalPrice / 100)}</h1>
            </div>
 

@@ -32,9 +32,9 @@ const Nav = ({amountItems}) => {
            
              
              <div onClick={()=> navigate('/cart')} className=' flex items-center '>
-              <div className=' relative p-1 flex'>
+              <div className=' relative   p-1 '>
  <img className='h-[34px] w-[50px]' src="../../public/images/icons/cart-icon.png" alt="" />
- <p className='absolute left-[50%] bottom-[40%] text-[#F08804] font-bold'>{amountItems}</p>
+ <p className='absolute right-0 top-0 bottom-4 left-[8.7px] text-[#F08804] font-bold items-center justify-center flex'>{amountItems}</p>
               </div>
              
               <h1>cart</h1>

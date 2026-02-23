@@ -103,10 +103,16 @@ useEffect(()=>{
   }
 
 
+
+  const totalKuantiti = cart.reduce((total,item)=>(
+     total + item.kuantiti
+  ),0)
+
+
   return (
 
     <>
-    <Nav amountItems={cart.kuantiti}/>
+    <Nav amountItems={totalKuantiti}/>
 
 
     {/* bahagian products */}
