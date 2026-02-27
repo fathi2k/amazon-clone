@@ -4,6 +4,7 @@ import './App.css'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import MainPage from './components/pages/MainPage.jsx'
 import CartPage from './components/pages/CartPage.jsx'
+import CartHistoryPage from './components/pages/CartHistoryPage.jsx'
 
 
 const routerr = createBrowserRouter([
@@ -13,6 +14,9 @@ const routerr = createBrowserRouter([
   },{
     path : '/cart',
     element : <CartPage/>
+  },{
+    path : '/orderHistory',
+    element : <CartHistoryPage/>
   }
 ])
 

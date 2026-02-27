@@ -107,6 +107,42 @@ const handleDelete = (id)=> {
   ),0)
 
 
+//placeholder///
+
+
+
+const handlePlaceOrder = () => {
+  if (cart.length === 0) return;
+
+  const orderDate = new Date().toLocaleDateString('ms-MY', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }); // contoh: "25 Februari 2026"
+
+  const newOrder = {
+    orderId: crypto.randomUUID(),
+    orderDate: orderDate,
+    items: cart,
+    totalCents: Math.round(subTotalPrice * 1.10)
+  };
+
+  // save dalam localStorage
+  const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
+  existingOrders.push(newOrder);
+  localStorage.setItem('orders', JSON.stringify(existingOrders));
+
+  // clear cart
+  localStorage.removeItem('dataBarang');
+  setCart([]);
+
+  navigate('/orders'); // pergi page orders
+};
+
+
+
+
+
 
   return (
 <>
@@ -191,7 +227,7 @@ const handleDelete = (id)=> {
             </div>
 
         
-              <button className='bg-amber-400 p-2 mt-7 rounded-[10px]'>Place your order</button>
+              <button onClick={()=>handlePlaceOrder()} className='bg-amber-400 p-2 mt-7 rounded-[10px]'>Place your order</button>
             
 
       </div>
