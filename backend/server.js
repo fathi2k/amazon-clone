@@ -24,7 +24,7 @@ app.get('/products',async (req,res)=>{
 
 
 
-app.post('/adminProducts',(req,res)=>{
+app.post('/adminProducts' ,(req,res)=>{
   const {nama,umur} = req.body;
 
     const rowData = fs.readFileSync('./database/json/dataAdmin.json');
@@ -34,7 +34,6 @@ app.post('/adminProducts',(req,res)=>{
 
         fs.writeFileSync('./database/json/dataAdmin.json',JSON.stringify(data,null,2))//save//  
 })
-
 
 
 
