@@ -54,6 +54,11 @@ const dataOrdered = ()=>{
    
   if (data){
    const updatedData =  JSON.parse(data);
+
+    
+
+
+
     setDataOrder(updatedData)
   console.log(updatedData);
   }

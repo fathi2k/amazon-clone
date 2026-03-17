@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from '../bahagian/Nav'
-import { dataProducts } from '../../data/dataProducts'
+// import { dataProducts } from '../../data/dataProducts'
 import { useState,useEffect } from 'react'
 
 import CardProduct from '../bahagian/CardProduct'
@@ -11,10 +11,14 @@ const MainPage = () => {
   const [dataProduct,setDataProduct] = useState([]);
     const [cart,setCart] = useState([]);
 
-  const handledata = async ()=>{
-    const data = await dataProducts();
+  const handledata = ()=>{
+    // const data = await dataProducts();
   
-      setDataProduct(data);
+    //   setDataProduct(data);
+
+fetch('http://localhost:4000/products').then(res => res.json()).then(data => setDataProduct(data))
+
+
     
       
   }
@@ -24,10 +28,7 @@ const MainPage = () => {
 
   useEffect(()=>{
 
-    if (dataProduct.length === 0){
-              handledata()
-              
-    }
+handledata();
       
       
 
