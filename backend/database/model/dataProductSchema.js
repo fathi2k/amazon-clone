@@ -17,9 +17,33 @@ const productsSchema = new Schema ({
 
 
 
+//login schema///
+
+
+const userSchema = new Schema({
+  fullName:String,
+  phoneNumber : String,
+  email : String,
+  password : String
+})
 
 
 
-export  const dataProducts = new model('product',productsSchema)
+// admin schema//
+
+const adminSchema = new Schema({
+  nama : String,
+  umur : String
+})
 
 
+
+
+
+
+ const dataProducts = new model('product',productsSchema)
+ const userData = new model('userData',userSchema)
+ const adminData = new model('dataAdmin',adminSchema)
+
+
+export {dataProducts,userData,adminData}

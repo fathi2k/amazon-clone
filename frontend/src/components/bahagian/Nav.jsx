@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 
 
@@ -21,7 +21,7 @@ const Nav = ({amountItems}) => {
            
           </div>
 
-          <div className='flex p-2 items-center text-white'>
+          <div className='flex p-2 items-center text-white gap-3'>
 
            <div onClick={()=> navigate('/orderHistory')} className='cursor-pointer'>
  <h1 className='max-w-[70px] leading-none'>Returns <span className='font-bold'>& Order</span>  </h1> 
@@ -37,9 +37,21 @@ const Nav = ({amountItems}) => {
  <p className='absolute right-0 top-0 bottom-4 left-[8.7px] text-[#F08804] font-bold items-center justify-center flex'>{amountItems}</p>
               </div>
              
-              <h1>cart</h1>
-             </div>
+           
+             </div> 
+
+
+
+           <div onClick={()=> navigate('/login')}>
+              <MdOutlineAccountCircle size={32} />
+            </div>
+
           </div>
+
+
+
+          
+          
          
     </div>
   )

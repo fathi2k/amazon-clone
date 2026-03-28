@@ -7,6 +7,8 @@ import CartPage from './components/pages/CartPage.jsx'
 import CartHistoryPage from './components/pages/CartHistoryPage.jsx'
 import SideBar from './components/bahagian/sidebar.jsx'
 import AdminPage from './components/pages/AdminPage.jsx'
+import LoginPage from './components/pages/LoginPage.jsx'
+import RegisterPage from './components/pages/RegisterPage.jsx'
 
 
 const routerr = createBrowserRouter([
@@ -22,6 +24,14 @@ const routerr = createBrowserRouter([
   },{
     path : '/admin',
     element : <AdminPage/>
+  },{
+    
+    path : '/register',
+    element : <RegisterPage/>
+    
+  },{
+    path : '/login',
+    element : <LoginPage/>
   }
 ])
 

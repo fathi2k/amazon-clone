@@ -6,14 +6,14 @@ import { dataProducts } from "../model/dataProductSchema.js";
 
 
  export  const connectionDb = async ()=>{
-  await mongoose.connect('mongodb://localhost:27017/dataProduct');
+  await mongoose.connect('mongodb://localhost:27017/amazonData');
 
   //json///
-  const dataRaw = fs.readFileSync('./database/json/data.json');
-  const data = JSON.parse(dataRaw)
+  // const dataRaw = fs.readFileSync('./database/json/data.json');
+  // const data = JSON.parse(dataRaw)
 
 
-  await dataProducts.insertMany(data)
+  // await dataProducts.insertMany(data)
 
   console.log('connect mongodb ✅');
   

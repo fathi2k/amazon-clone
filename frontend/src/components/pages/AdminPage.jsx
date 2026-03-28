@@ -21,7 +21,10 @@ const handleSubmit = ()=>{
   headers : {
     'Content-Type' : 'application/json'
   },
-  body : JSON.stringify(inputForm)
+  body : JSON.stringify({
+    nama : inputForm.nama,
+    umur : inputForm.umur
+  })
 })
       
 }

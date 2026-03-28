@@ -30,7 +30,7 @@ fetch('http://localhost:4000/products').then(res => res.json()).then(data => set
 
 handledata();
       
-      
+        
 
   },[]) 
 
@@ -42,6 +42,8 @@ useEffect(()=>{
         if (saveCart){
           setCart(saveCart)
         }
+
+      
 },[])
 
 
@@ -62,7 +64,7 @@ useEffect(()=>{
 
     if (adaItems){
       const updateCard1 = cart.map((para)=>(
-        para.id === id ? {...para,kuantiti : para.kuantiti + 1} : para
+        para._id === id ? {...para,kuantiti : para.kuantiti + 1} : para
       ))
 
       setCart(updateCard1)
@@ -73,7 +75,7 @@ useEffect(()=>{
 
 
         const adaData = dataProduct.find((para)=>(
-          para.id === id 
+          para._id === id 
         ))
 
         const updateCard = [...cart,{...adaData,kuantiti : Number(kuantitiCustom) || 1 }]
@@ -129,7 +131,7 @@ useEffect(()=>{
 
               dataProduct.map((para)=>(
                 
-                <CardProduct key={para.id} picProducts={para.image} title={para.name} price={(para.priceCents / 100)} handleAdd={handleAdd} kuantiti={para.kuantiti} id={para.id}/>
+                <CardProduct key={para._id} picProducts={para.image} title={para.name} price={(para.priceCents / 100)} handleAdd={handleAdd} kuantiti={para.kuantiti} id={para._id}/>
               ))
 
 
