@@ -80,7 +80,7 @@ const hanshedPassword = await bcript.hash(password,10);
 
 
   //masukkan dalam mongo
- const dataBaru = userData.create({
+ const dataBaru = await userData.create({
     fullName,
     phoneNumber,
     email,
@@ -89,7 +89,7 @@ const hanshedPassword = await bcript.hash(password,10);
 
 
 
-res.json({message:'data telah berdaftar',dataBaru})
+res.json({message:'data telah berdaftar ✅',dataBaru})
 
 
 })

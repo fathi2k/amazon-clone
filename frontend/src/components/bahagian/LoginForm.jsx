@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 
 
@@ -12,7 +12,7 @@ const [inputValue,setInputValue] = useState({
   password : ''
 })
 
-const navigate = useNavigate()
+
 
 
 //login
@@ -43,26 +43,27 @@ const handleSubmit = (e)=>{
 
     <>
 
-    <form action="" onSubmit={handleSubmit}>
+    <form className='flex flex-col gap-3' action="" onSubmit={handleSubmit}>
 
-  <div>
+  <div className='flex flex-col gap-3 mt-4 text-[#8A8278]'>
 
       <div className='flex flex-col'>
-             <label htmlFor="" className='font-bold'>Email or mobile phone number</label>
-            <input type="email" className='border w-[300px] p-2 rounded-2xl' required   onChange={(e)=>setInputValue({...inputValue,email : e.target.value})} value={inputValue.email}/>
+             <label htmlFor="" className='font-bold'>Email</label>
+            <input type="email" className='border w-[300px] p-3 rounded-[10px] text-[14px] border-[#2E2E2E]' required   onChange={(e)=>setInputValue({...inputValue,email : e.target.value})} value={inputValue.email} placeholder='you@example.com' autoFocus/>
       </div>
 
 
         <div className='flex flex-col'>
              <label htmlFor="" className='font-bold'>Password</label>
-            <input type="password" className='border w-[300px] p-2 rounded-2xl '  required onChange={(e)=>setInputValue({...inputValue,password : e.target.value})} value={inputValue.password}/>
+            <input type="password" className='border w-[300px] p-3 rounded-[10px]  text-[14px] border-[#2E2E2E]'  required onChange={(e)=>setInputValue({...inputValue,password : e.target.value})} value={inputValue.password} placeholder='*******' />
       </div>
            
     </div>
 
-    <div className='flex gap-2 mt-2'>
-      <button className='bg-amber-200 p-2'>Sign In</button>
-      <button onClick={()=>navigate('/register')} className='bg-amber-200 p-2'>Register Now</button>
+    <div className='flex gap-2 mt-2 bg-[#FF9900] items-center p-2 rounded-[10px] justify-center text-black hover:bg-[#bb7308] transition-all'>
+      <button type="submit" className='   rounded-[10px]'>Sign In </button>
+        <IoIosArrowRoundForward />
+      
     </div>
 
     </form>
