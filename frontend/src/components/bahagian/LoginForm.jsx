@@ -26,6 +26,7 @@ const handleSubmit = (e)=>{
     headers : {
       'Content-Type' : 'application/json'
     },
+        credentials: 'include', // TAMBAH NI — supaya cookie disimpan
     body : JSON.stringify({
       email : inputValue.email,
       password : inputValue.password
@@ -73,3 +74,7 @@ const handleSubmit = (e)=>{
 }
 
 export default LoginForm
+
+
+
+
