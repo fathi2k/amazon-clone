@@ -11,7 +11,7 @@ const CardProduct = ({picProducts,title,price,kuantiti,id,handleAdd}) => {
 
 
   return (
-    <div className=' h-[493px] p-3 border-b-1 border-l-1 border-gray-300 flex flex-col  gap-5'>
+    <div className=' h-[493px] p-3 border-b-1 border-r-[1px]  border-gray-300 flex flex-col  gap-5'>
               <img src={picProducts} className='h-[180px] w-[192px]' />
 
              

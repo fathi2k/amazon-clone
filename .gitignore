@@ -4,3 +4,4 @@ node_modules/
 backend/.env
 dish/
 build/
+ backend/uploads

@@ -31,10 +31,10 @@ const userSchema = new Schema({
 
 // admin schema//
 
-const adminSchema = new Schema({
-  nama : String,
-  umur : String
-})
+// const adminSchema = new Schema({
+//   name : String,
+//   price : String
+// })
 
 
 
@@ -43,7 +43,7 @@ const adminSchema = new Schema({
 
  const dataProducts = new model('product',productsSchema)
  const userData = new model('userData',userSchema)
- const adminData = new model('dataAdmin',adminSchema)
+//  const adminData = new model('dataAdmin',adminSchema)
 
 
-export {dataProducts,userData,adminData}
+export {dataProducts,userData}

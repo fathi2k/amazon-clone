@@ -4,20 +4,29 @@ dotenv.config() //wajib !!!
 
 import express from 'express'
 import { connectionDb } from './database/mongoDb/mongoDB.js';
-import { userData,dataProducts,adminData } from './database/model/dataProductSchema.js';
+import { userData,dataProducts} from './database/model/dataProductSchema.js';
 import bcript from 'bcrypt';
 import cors from 'cors' 
 import fs from 'fs';
 import jwt from 'jsonwebtoken'
+import multer from 'multer'
+
+const upload = multer({ dest: 'uploads/' })
 
 
 const app = express();
-app.use(express.json());
+app.use(express.json({limit:'10mb'}));
+app.use('/uploads', express.static('uploads'))  // ← tambah ni untuk bagi permission guna image
+app.use('/images', express.static('images'))
 const myPort = 4000;
 app.use(cors({
    origin: 'http://localhost:5173', // port frontend React korang
      credentials: true // WAJIB untuk cookies cross-origin
 }))
+
+
+
+
 //import mongodb//
 
 
@@ -32,12 +41,31 @@ app.get('/',(req,res)=>{
 
 
 
-//display data products
+// DISPLAY DATA PRODUCTS
 app.get('/products',async (req,res)=>{
         const data = await dataProducts.find();
         
         res.json(data);
 })  
+
+
+//ADD DATA PRODUCTS///
+
+app.post('/products',upload.single('image'),async(req,res)=>{
+
+ console.log('body:', req.body)   // ← check name & price sampai tak
+  console.log('file:', req.file)  // ← check image sampai tak
+
+
+    const newProducts = new dataProducts ({
+      name : req.body.name,
+      priceCents : req.body.price,
+      image : req.file ? req.file.path : ''
+    })
+
+     await newProducts.save()
+     res.json({message:'Added Products ✅'})
+})
 
 
 //display data User//
@@ -49,23 +77,6 @@ app.get('/dataUser', async (req,res)=>{
 
 
 
-app.post('/adminProducts' ,async (req,res)=>{
-  const {nama,umur} =  req.body;
-
-    // const rowData = fs.readFileSync('./database/json/dataAdmin.json');
-    // const data = JSON.parse(rowData);
-    
-    // data.push({nama,umur}) //push data baru 
-
-    //     fs.writeFileSync('./database/json/dataAdmin.json',JSON.stringify(data,null,2))//save//
-    
-    adminData.create({
-      nama,
-      umur
-    })
-
-
-})
 
 
 //REGISTER///

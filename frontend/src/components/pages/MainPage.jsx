@@ -131,7 +131,9 @@ useEffect(()=>{
 
               dataProduct.map((para)=>(
                 
-                <CardProduct key={para._id} picProducts={para.image} title={para.name} price={(para.priceCents / 100)} handleAdd={handleAdd} kuantiti={para.kuantiti} id={para._id}/>
+                <CardProduct key={para._id} picProducts={
+                  para.image?.startsWith('upload') ? `http://localhost:4000/${para.image}` : `/${para.image}`
+                } title={para.name} price={(para.priceCents / 100)} handleAdd={handleAdd} kuantiti={para.kuantiti} id={para._id}/>
               ))
 
 
